@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "site-preflight"
+dynamic = ["version"]
+description = "Check a website before launch: broken links, HTTPS, redirects, title, meta description, mobile viewport, robots.txt, sitemap and footer year."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "DigitalCave (Rocky V)" }]
+requires-python = ">=3.8"
+keywords = ["seo", "website", "launch", "checklist", "broken-links", "audit", "cli"]
+classifiers = [
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Internet :: WWW/HTTP :: Site Management",
+    "Topic :: Internet :: WWW/HTTP :: Site Management :: Link Checking",
+]
+
+[project.urls]
+Homepage = "https://digitalcave.uk"
+Source = "https://github.com/digitalcaveuk/site-preflight"
+Issues = "https://github.com/digitalcaveuk/site-preflight/issues"
+
+[project.scripts]
+site-preflight = "site_preflight.cli:main"
+
+[tool.setuptools]
+packages = ["site_preflight"]
+
+[tool.setuptools.dynamic]
+version = { attr = "site_preflight.__version__" }
