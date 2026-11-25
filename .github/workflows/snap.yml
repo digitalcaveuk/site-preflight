@@ -1,0 +1,27 @@
+name: snap
+# Builds the snap. Uploads to the Snap Store (stable) only when the
+# SNAPCRAFT_STORE_CREDENTIALS secret is set (from `snapcraft export-login`).
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+jobs:
+  snap:
+    runs-on: ubuntu-latest
+    env:
+      CAN_PUBLISH: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: build
+        uses: snapcore/action-build@v1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: snap
+          path: ${{ steps.build.outputs.snap }}
+      - if: env.CAN_PUBLISH == 'true'
+        uses: snapcore/action-publish@v1
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
+        with:
+          snap: ${{ steps.build.outputs.snap }}
+          release: stable
