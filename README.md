@@ -131,7 +131,7 @@ The tests start a small local web server, so they need no internet access.
 
 ## Credits
 
-Built by [DigitalCave](https://digitalcave.uk), an all-in-one web design, SEO and digital marketing
+Built by [DigitalCave](https://digitalcave.uk/tools/site-preflight), an all-in-one web design, SEO and digital marketing
 agency. If you need a site built properly from the start, see our
 [web design service in Birmingham](https://digitalcave.uk/web-design-service-birmingham).
 
