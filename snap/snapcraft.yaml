@@ -1,0 +1,36 @@
+name: site-preflight
+base: core24
+adopt-info: site-preflight
+summary: Check a website before launch, from the command line
+description: |
+  site-preflight checks a website before launch and prints a clear report:
+  home page status and broken internal links, HTTPS and HSTS, the http and
+  www redirects, page title, meta description, mobile viewport meta,
+  noindex left over from staging, robots.txt, XML sitemap and an old
+  copyright year in the footer. Use --json for machine-readable output.
+
+  Usage: site-preflight --url https://example.com [--max-links 25] [--json]
+
+  Built by DigitalCave, an all-in-one web design, SEO and digital marketing
+  agency: https://digitalcave.uk
+license: MIT
+grade: stable
+confinement: strict
+website: https://digitalcave.uk
+source-code: https://github.com/digitalcaveuk/site-preflight
+issues: https://github.com/digitalcaveuk/site-preflight/issues
+contact: listings@digitalcave.uk
+
+apps:
+  site-preflight:
+    command: bin/site-preflight
+    plugs:
+      - network
+
+parts:
+  site-preflight:
+    plugin: python
+    source: .
+    override-pull: |
+      craftctl default
+      craftctl set version="$(python3 -c "import re;print(re.search(r'__version__ = \"(.+)\"', open('site_preflight/__init__.py').read()).group(1))")"
