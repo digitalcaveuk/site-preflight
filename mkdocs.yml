@@ -1,0 +1,24 @@
+site_name: site-preflight
+site_description: A free command line tool that checks a website before launch for broken links, HTTPS, redirects, SEO basics, robots.txt, sitemap and footer year.
+site_author: DigitalCave
+site_url: https://site-preflight.readthedocs.io/
+repo_url: https://github.com/digitalcaveuk/site-preflight
+repo_name: digitalcaveuk/site-preflight
+edit_uri: blob/main/docs/
+copyright: site-preflight is MIT licensed. Built and maintained by DigitalCave.
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - bash
+nav:
+  - Home: index.md
+  - Install: install.md
+  - Usage: usage.md
+  - About: about.md
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - tables
